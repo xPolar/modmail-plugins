@@ -17,3 +17,9 @@ Welcome to the ModMail Moderation Plugin GitHub! Any important information will 
 
 # Modlog
 To set up the modlog create a channel called `modlog` and allow your ModMail bot to have access to send and read messages. After that you may fiddle with the permissions however you like as long as ModMail keeps its required permissions.
+
+# Support The Dev
+Feel free to invite WumpusMod, this plugin is basically just that bot with 20 lines of code edited to fit the Plugin format!
+- [Invite Link](https://discordapp.com/oauth2/authorize?client_id=596532744218214402&permissions=8&scope=bot)
+
+- [Support Server](https://discordapp.com/invite/tjA5ssJ)
