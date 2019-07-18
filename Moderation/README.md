@@ -16,4 +16,4 @@ Welcome to the ModMail Moderation Plugin GitHub! Any important information will 
 | Unmute | Unmutes a user so they can talk | Moderator |
 
 # Modlog
-To set up the modlog create a channel called `modlog` and allow your ModMail bot to have access to send and read messages. After that you may fiddle with the permissions however you like as long as ModMail keeps its required permissions. d
+To set up the modlog create a channel called `modlog` and allow your ModMail bot to have access to send and read messages. After that you may fiddle with the permissions however you like as long as ModMail keeps its required permissions.
