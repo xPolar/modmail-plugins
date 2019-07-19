@@ -82,6 +82,14 @@ class moderation(commands.Cog):
             )
             await ctx.send(embed = embed, delete_after = 5.0)
         else:
+            if member.id == ctx.message.author.id:
+                embed = discord.Embed(
+                    title = "Kick Error",
+                    description = "You can't kick yourself!",
+                    color = self.blurple
+                )
+                await ctx.send(embed = embed)
+            else:
                 if reason == None:
                     await member.kick(reason = f"Moderator - {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - No reason proivded.")
                     embed = discord.Embed(
@@ -141,41 +149,49 @@ class moderation(commands.Cog):
             )
             await ctx.send(embed = embed)
         else:
-            if reason == None:
-                await member.ban(reason = f"Moderator - {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - No Reason Provided.")
+            if member.id == ctx.message.author.id:
                 embed = discord.Embed(
-                    title = "Ban",
-                    description = f"{member.mention} has been banned by {ctx.message.author.mention}.",
+                    title = "Ban Error",
+                    description = "You can't ban yourself!",
                     color = self.blurple
                 )
-                modlog = discord.utils.get(ctx.guild.text_channels, name = "modlog")
-                if modlog == None:
-                    return
-                if modlog != None:
+                await ctx.send(embed = embed)
+            else:
+                if reason == None:
+                    await member.ban(reason = f"Moderator - {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - No Reason Provided.")
                     embed = discord.Embed(
                         title = "Ban",
                         description = f"{member.mention} has been banned by {ctx.message.author.mention}.",
                         color = self.blurple
                     )
-                    await modlog.send(embed = embed)
-            else:
-                await member.ban(reason = f"Moderator - {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - {reason}")
-                embed = discord.Embed(
-                    title = "Ban",
-                    description = f"{member.mention} has been banend by {ctx.message.author.mention} for {reason}",
-                    color = self.blurple
-                )
-                await ctx.send(embed = embed)
-                modlog = discord.utils.get(ctx.guild.text_channels, name = "modlog")
-                if modlog == None:
-                    return
-                if modlog != None:
+                    modlog = discord.utils.get(ctx.guild.text_channels, name = "modlog")
+                    if modlog == None:
+                        return
+                    if modlog != None:
+                        embed = discord.Embed(
+                            title = "Ban",
+                            description = f"{member.mention} has been banned by {ctx.message.author.mention}.",
+                            color = self.blurple
+                        )
+                        await modlog.send(embed = embed)
+                else:
+                    await member.ban(reason = f"Moderator - {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - {reason}")
                     embed = discord.Embed(
                         title = "Ban",
-                        description = f"{member.mention} has been banned by {ctx.message.author.mention} in {ctx.message.channel.mention} for {reason}",
+                        description = f"{member.mention} has been banend by {ctx.message.author.mention} for {reason}",
                         color = self.blurple
                     )
-                    await modlog.send(embed = embed)
+                    await ctx.send(embed = embed)
+                    modlog = discord.utils.get(ctx.guild.text_channels, name = "modlog")
+                    if modlog == None:
+                        return
+                    if modlog != None:
+                        embed = discord.Embed(
+                            title = "Ban",
+                            description = f"{member.mention} has been banned by {ctx.message.author.mention} in {ctx.message.channel.mention} for {reason}",
+                            color = self.blurple
+                        )
+                        await modlog.send(embed = embed)
 
     @ban.error
     async def ban_error(self, ctx, error):
@@ -371,44 +387,52 @@ class moderation(commands.Cog):
             )
             await ctx.send(embed = embed, delete_after = 5.0)
         else:
-            if reason == None:
-                await member.ban(reason = f"Softban by {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - No Reason Provided.")
-                await member.unban()
+            if member.id == ctx.message.author.id:
                 embed = discord.Embed(
-                    title = "Softban",
-                    description = f"{member.mention} has been softbanned by {ctx.message.author.mention}",
+                    title = "Softban Error",
+                    description = "You can't softban yourself!",
                     color = self.blurple
                 )
                 await ctx.send(embed = embed)
-                modlog = discord.utils.get(ctx.guild.text_channels, name = "modlog")
-                if modlog == None:
-                    return
-                if modlog != None:
-                    embed = discord.Embed(
-                        title = "Softban",
-                        description = f"{member.mention} has been softbanned by {ctx.message.author.mention}.",
-                        color = self.blurple
-                    )
-                    await modlog.send(embed = embed)
             else:
-                await member.ban(reason = f"Softban by {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - {reason}.")
-                await member.unban()
-                embed = discord.Embed(
-                    title = "Softban",
-                    description = f"{member.mention} has been softbanned by {ctx.message.author.mention} for {reason}",
-                    color = self.blurple
-                )
-                await ctx.send(embed = embed)
-                modlog = discord.utils.get(ctx.guild.text_channels, name = "modlog")
-                if modlog == None:
-                    return
-                if modlog != None:
+                if reason == None:
+                    await member.ban(reason = f"Softban by {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - No Reason Provided.")
+                    await member.unban()
                     embed = discord.Embed(
                         title = "Softban",
-                        description = f"{member.mention} has been softbanned by {ctx.message.author.mention} for {reason}.",
+                        description = f"{member.mention} has been softbanned by {ctx.message.author.mention}",
                         color = self.blurple
                     )
-                    await modlog.send(embed = embed)
+                    await ctx.send(embed = embed)
+                    modlog = discord.utils.get(ctx.guild.text_channels, name = "modlog")
+                    if modlog == None:
+                        return
+                    if modlog != None:
+                        embed = discord.Embed(
+                            title = "Softban",
+                            description = f"{member.mention} has been softbanned by {ctx.message.author.mention}.",
+                            color = self.blurple
+                        )
+                        await modlog.send(embed = embed)
+                else:
+                    await member.ban(reason = f"Softban by {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - {reason}.")
+                    await member.unban()
+                    embed = discord.Embed(
+                        title = "Softban",
+                        description = f"{member.mention} has been softbanned by {ctx.message.author.mention} for {reason}",
+                        color = self.blurple
+                    )
+                    await ctx.send(embed = embed)
+                    modlog = discord.utils.get(ctx.guild.text_channels, name = "modlog")
+                    if modlog == None:
+                        return
+                    if modlog != None:
+                        embed = discord.Embed(
+                            title = "Softban",
+                            description = f"{member.mention} has been softbanned by {ctx.message.author.mention} for {reason}.",
+                            color = self.blurple
+                        )
+                        await modlog.send(embed = embed)
 
     @softban.error
     async def softban_error(self, ctx, error):
