@@ -446,7 +446,7 @@ class moderation(commands.Cog):
 
     #Nuke command
     @commands.command()
-    @checks.has_permissions(permissionLevel.MODERATOR)
+    @checks.has_permissions(PermissionLevel.MODERATOR)
     async def nuke(self, ctx):
         channel_position = ctx.channel.position
         new_channel = await ctx.channel.clone()
