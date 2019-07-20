@@ -21,7 +21,7 @@ class moderation(commands.Cog):
 
     #Purge command
     @commands.command(aliases = ["clear"])
-    @commands.has_permissions(PermissionLevel.SUPPORTER)
+    @checks.has_permissions(PermissionLevel.SUPPORTER)
     async def purge(self, ctx, amount = 10):
         max_purge = 2000
         if amount >= 1 and amount <= max_purge:
@@ -72,7 +72,7 @@ class moderation(commands.Cog):
 
     #Kick command
     @commands.command()
-    @commands.has_permissions(PermissionLevel.MODERATOR)
+    @checks.has_permissions(PermissionLevel.MODERATOR)
     async def kick(self, ctx, member : discord.Member = None, *, reason = None):
         if member == None:
             embed = discord.Embed(
@@ -139,7 +139,7 @@ class moderation(commands.Cog):
 
     #Ban command
     @commands.command()
-    @commands.has_permissions(PermissionLevel.ADMINISTRATOR)
+    @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
     async def ban(self, ctx, member : discord.Member = None, *, reason = None):
         if member == None:
             embed = discord.Embed(
@@ -205,7 +205,7 @@ class moderation(commands.Cog):
 
     #Unban command
     @commands.command()
-    @commands.has_permissions(PermissionLevel.ADMINISTRATOR)
+    @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
     async def unban(self, ctx, *, member : discord.User = None):
         if member == None:
             embed = discord.Embed(
@@ -251,7 +251,7 @@ class moderation(commands.Cog):
 
     #Mute command
     @commands.command()
-    @commands.has_permissions(PermissionLevel.MODERATOR)
+    @checks.has_permissions(PermissionLevel.MODERATOR)
     async def mute(self, ctx, member : discord.Member = None, *, reason = None):
         if member == None:
             embed = discord.Embed(
@@ -328,7 +328,7 @@ class moderation(commands.Cog):
 
     #Unmute command
     @commands.command()
-    @commands.has_permissions(PermissionLevel.MODERATOR)
+    @checks.has_permissions(PermissionLevel.MODERATOR)
     async def unmute(self, ctx, member : discord.Member = None):
         if member == None:
             embed = discord.Embed(
@@ -377,7 +377,7 @@ class moderation(commands.Cog):
 
     #Softban
     @commands.command(aliases = ["lightban"])
-    @commands.has_permissions(PermissionLevel.ADMINISTRATOR)
+    @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
     async def softban(self, ctx, member : discord.Member = None, *, reason = None):
         if member == None:
             embed = discord.Embed(
@@ -446,7 +446,7 @@ class moderation(commands.Cog):
 
     #Nuke command
     @commands.command()
-    @commands.has_permissions(PermisionLevel.MODERATOR)
+    @checks.has_permissions(PermisionLevel.MODERATOR)
     async def nuke(self, ctx):
         channel_position = ctx.channel.position
         new_channel = await ctx.channel.clone()
