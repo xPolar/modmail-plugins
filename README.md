@@ -5,8 +5,8 @@ Welcome to the Polar's ModMail Plugin GitHub! Any important information will be 
 # Plugin list
 | Plugin | Description |
 | ------ | ----------- |
-| [Moderation](https://github.com/xPolar/modmail-plugins/tree/master/Moderation) | Moderation plugin to moderate your server. |
-| [Search](https://github.com/xPolar/modmail-plugins/tree/master/Search) | Searches things on the interwebs. |
+| [Moderation](https://github.com/xPolar/modmail-plugins/tree/master/moderation) | Moderation plugin to moderate your server. |
+| [Search](https://github.com/xPolar/modmail-plugins/tree/master/search) | Searches things on the interwebs. |
 
 # Support The Dev
 Feel free to invite WumpusMod, WumpusMod is Polar's bot that he has been working on!
