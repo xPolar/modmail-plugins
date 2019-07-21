@@ -458,7 +458,7 @@ class moderation(commands.Cog):
             color = self.blurple
         )
         embed.set_image(url = "https://cdn.discordapp.com/attachments/600843048724987925/600843407228928011/tenor.gif")
-        await new_channel.send(embed = embed, delete_after = 5.0)
+        await new_channel.send(embed = embed, delete_after = 30.0)
         modlog = discord.utils.get(ctx.guild.text_channels, name = "modlog")
         if modlog == None:
             pass
