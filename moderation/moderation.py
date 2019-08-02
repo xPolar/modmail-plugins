@@ -178,7 +178,7 @@ class moderation(commands.Cog):
                     await member.ban(reason = f"Moderator - {ctx.message.author.name}#{ctx.message.author.discriminator}.\nReason - {reason}")
                     embed = discord.Embed(
                         title = "Ban",
-                        description = f"{member.mention} has been banend by {ctx.message.author.mention} for {reason}",
+                        description = f"{member.mention} has been banned by {ctx.message.author.mention} for {reason}",
                         color = self.blurple
                     )
                     await ctx.send(embed = embed)
